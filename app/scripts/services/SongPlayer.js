@@ -25,12 +25,21 @@
             
             currentSong = song;
         };
-        
+        /**
+        * @function playSong
+        * @desc plays song and sets true statement
+        * @param {Object} song
+        */        
         var playSong = function(song) {
             currentBuzzObject.play();
             song.playing = true;
         };
         
+        /**
+        * @method .play
+        * @desc checks if song is not playing and starts.
+        * @param {Object} song
+        */
         SongPlayer.play = function(song) {
             if (currentSong !== song) {
                 setSong(song);
@@ -42,6 +51,11 @@
             }
         };
         
+        /**
+        * @method .pause
+        * @desc sets playing song to paused.
+        * @param {Object} song
+        */        
         SongPlayer.pause = function(song) {
             currentBuzzObject.pause();
             song.playing=false;
