@@ -2,6 +2,7 @@
     function SongPlayer($rootScope, Fixtures) {
         var SongPlayer = {};
         var currentAlbum = Fixtures.getAlbum();
+        
         /**
         * @function getSongIndex
         * @desc returns index of song
@@ -21,6 +22,13 @@
         *@type {Number}
         */
         SongPlayer.currentTime = null;
+        
+        /**
+        * @desc Current volume level of player
+        *@type {Number}
+        */        
+        SongPlayer.volume = 80;
+        
         /**
         * @desc Buzz object audio file
         * @type {Object}
@@ -43,7 +51,7 @@
             
             currentBuzzObject.bind('timeupdate', function() {
                 $rootScope.$apply(function() {
-                    SongPlayer.currentTime = currentBuzzObject.getTime();
+                    SongPlayer.currentTime = parseInt(currentBuzzObject.getTime());
                 });
             });
             
@@ -136,6 +144,13 @@
                 currentBuzzObject.setTime(time);
             }
         };
+        
+        SongPlayer.setVolume = function(volume) {
+          currentBuzzObject.setVolume(volume);  
+        };
+        
+        
+        
         
         
         return SongPlayer;
