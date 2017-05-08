@@ -19,14 +19,14 @@
                     </a>
                 </div>
                 <div class="control-group currently-playing">
-                    <h2 class="song-name" ng-show="playerBar.songPlayer.currentSong.playing">{{ playerBar.songPlayer.currentSong.title }}</h2>
+                    <h2 class="song-name">{{ playerBar.songPlayer.currentSong.title }}</h2>
                     <div class="seek-control">
                         <seek-bar value="{{ playerBar.songPlayer.currentTime }}" max="{{ playerBar.songPlayer.currentSong.duration }}" on-change="playerBar.songPlayer.setCurrentTime(value)"></seek-bar>
-                        <div class="current-time" ng-show="playerBar.songPlayer.currentSong.playing">{{ playerBar.songPlayer.currentTime * 1000 | date:"m:ss" }}</div>
-                        <div class="total-time" ng-show="playerBar.songPlayer.currentSong.playing">{{ playerBar.songPlayer.currentSong.duration }}</div>
+                        <div class="current-time">{{ playerBar.songPlayer.currentTime | timecode }}</div>
+                        <div class="total-time">{{ playerBar.songPlayer.currentSong.duration | timecode }}</div>
                     </div>
-                    <h2 class="artist-song-mobile" ng-show="playerBar.songPlayer.currentSong.playing">{{ playerBar.songPlayer.currentSong.title }} - {{ album.albumData.artist }}</h2>
-                    <h3 class="artist-name" ng-show="playerBar.songPlayer.currentSong.playing">{{ album.albumData.artist }}</h3>
+                    <h2 class="artist-song-mobile">{{ playerBar.songPlayer.currentSong.title }} - {{ album.albumData.artist }}</h2>
+                    <h3 class="artist-name">{{ album.albumData.artist }}</h3>
                 </div>
                 <div class="control-group volume">
                     <span class="ion-volume-high icon"></span>
