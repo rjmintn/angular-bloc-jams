@@ -40,6 +40,10 @@
             var albums = [];
             for (var i=0; i < numberOfAlbums; i++) {
                 albums.push(angular.copy(albumPicasso));
+                albums[i].title += i;
+                for (x in albums[i].songs) {
+                    albums[i].songs[x].title += i;
+                }
             }
             return albums;
         }

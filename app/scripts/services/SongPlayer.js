@@ -64,11 +64,13 @@
         */        
         var playSong = function(song) {
             currentBuzzObject.play();
+            currentBuzzObject.bind('ended', SongPlayer.next);
             song.playing = true;
         };
         
         var stopSong = function(song) {
             currentBuzzObject.stop();
+            currentBuzzObject.unbind('ended');
             song.playing = null;
         }
         
@@ -144,6 +146,17 @@
                 currentBuzzObject.setTime(time);
             }
         };
+        
+        SongPlayer.mute = function() {
+            currentBuzzObject.mute();
+            SongPlayer.currentSong.muted = true;
+        };
+        
+        SongPlayer.unmute = function() {
+            currentBuzzObject.unmute();
+            SongPlayer.currentSong.muted = false;
+        };
+        
         
         SongPlayer.setVolume = function(volume) {
           currentBuzzObject.setVolume(volume);  
